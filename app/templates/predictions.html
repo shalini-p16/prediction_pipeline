@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Results</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    <table>
+        <tr>
+<!--            <th>Index</th>-->
+            <th>Prediction</th>
+        </tr>
+        {% for prediction in predictions %}
+        <tr>
+<!--            <td>{{ index }}</td>-->
+            <td>{{ prediction }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Vehicle Fuel Consumption Prediction</h1>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Predict Fuel Consumption</h2>
+            <form action="/predict" method="POST">
+                <label for="selected_model">Select Model:</label>
+                <select name="selected_model">
+                    <option value="xgboost">XGBoost</option>
+                    <option value="linear">Linear R</option>
+                </select>
+                <br><br>
+                <button class="button" type="submit">Predict</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            {% if predictions %}
+            <h2>Predictions</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Predicted Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for idx, value in predictions.iterrows() %}
+                    <tr>
+                        <td>{{ idx }}</td>
+                        <td>{{ value[0] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+
+
+</body>
+</html>
